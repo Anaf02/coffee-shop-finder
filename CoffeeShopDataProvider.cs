@@ -1,6 +1,6 @@
-﻿using coffee_shop_finder.Exceptions;
+﻿using CoffeeShopFinder.Exceptions;
 
-namespace coffee_shop_finder
+namespace CoffeeShopFinder
 {
     public class CoffeeShopDataProvider
     {

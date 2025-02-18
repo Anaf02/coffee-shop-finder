@@ -1,4 +1,4 @@
-﻿namespace coffee_shop_finder
+﻿namespace CoffeeShopFinder
 {
     public class Location
     {

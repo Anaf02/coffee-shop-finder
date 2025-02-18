@@ -1,4 +1,4 @@
-﻿namespace coffee_shop_finder.Exceptions
+﻿namespace CoffeeShopFinder.Exceptions
 {
     public class InvalidArgumentTypeException : Exception
     {
