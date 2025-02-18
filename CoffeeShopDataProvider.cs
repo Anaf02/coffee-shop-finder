@@ -23,10 +23,11 @@ namespace coffee_shop_finder
             {
                 IsCsvContentValid(csvContent);
 
-                CoffeeShops = csvContent.Split("\n")
-                                         .Select(line => line.Split(","))
-                                         .Select(values => new CoffeeShop(double.Parse(values[1]), double.Parse(values[2]), values[0]))
-                                         .ToList();
+                List<string> lines = csvContent.Split("\n").ToList();
+                lines.RemoveAll(x => String.IsNullOrWhiteSpace(x));
+                CoffeeShops = lines.Select(line => line.Split(","))
+                                   .Select(values => new CoffeeShop(double.Parse(values[1]), double.Parse(values[2]), values[0]))
+                                   .ToList();
             }
             else
             {
@@ -55,21 +56,22 @@ namespace coffee_shop_finder
 
             foreach (string line in lines)
             {
+                if (String.IsNullOrWhiteSpace(line) ) { continue; } //skip empty lines :)
                 string[] lineValues = line.Split(",");
 
                 if (lineValues.Length != 3)
                 {
-                    throw new InvalidCsvContentException();
+                    throw new InvalidCsvContentException(line);
                 }
 
                 if (!Double.TryParse(lineValues[1], out _))
                 {
-                    throw new InvalidCoordinateException(lineValues[1]);
+                    throw new InvalidCoordinateException(lineValues[1], line);
                 }
 
                 if (!Double.TryParse(lineValues[2], out _))
                 {
-                    throw new InvalidCoordinateException(lineValues[2]);
+                    throw new InvalidCoordinateException(lineValues[2], line);
                 }
             }
 
