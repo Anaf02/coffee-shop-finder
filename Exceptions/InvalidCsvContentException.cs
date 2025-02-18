@@ -2,9 +2,9 @@
 {
     internal class InvalidCsvContentException : Exception
     {
-        private const string message = "The .csv must be comma separated file with rows of the following form: Name,Y Coordinate,X Coordinate";
+        private static readonly string message = "Invalid line '{0}'. The .csv must be comma separated file with rows of the following form: Name,X Coordinate,Y Coordinate";
 
-        public InvalidCsvContentException()
-        : base(message) { }
+        public InvalidCsvContentException(string line)
+        : base(String.Format(message, line.Replace("\r", ""))) { }
     }
 }

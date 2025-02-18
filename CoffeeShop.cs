@@ -4,7 +4,7 @@
     {
         public string Name { get; private set; }
 
-        public CoffeeShop(double xCoordinate, double yCoordinate, string name) : base(xCoordinate, yCoordinate)
+        public CoffeeShop(double x, double y, string name) : base(x, y)
         {
             this.Name = name;
         }

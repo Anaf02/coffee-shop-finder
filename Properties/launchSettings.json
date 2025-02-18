@@ -2,7 +2,7 @@
   "profiles": {
     "coffee-shop-finder": {
       "commandName": "Project",
-      "commandLineArgs": "47.6\r\n-122.4\r\nhttps://raw.githubusercontent.com/Agilefreaks/test_oop/master/coffee_shops.csv"
+      "commandLineArgs": "47.6\r\n-122.4\r\nBook1.csv"
     }
   }
 }

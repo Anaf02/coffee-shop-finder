@@ -59,17 +59,17 @@ namespace coffee_shop_finder
 
                 if (lineValues.Length != 3)
                 {
-                    throw new InvalidCsvContentException();
+                    throw new InvalidCsvContentException(line);
                 }
 
                 if (!Double.TryParse(lineValues[1], out _))
                 {
-                    throw new InvalidCoordinateException(lineValues[1]);
+                    throw new InvalidCoordinateException(lineValues[1], line);
                 }
 
                 if (!Double.TryParse(lineValues[2], out _))
                 {
-                    throw new InvalidCoordinateException(lineValues[2]);
+                    throw new InvalidCoordinateException(lineValues[2], line);
                 }
             }
 
