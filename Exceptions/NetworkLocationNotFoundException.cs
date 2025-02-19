@@ -1,6 +1,6 @@
 ﻿namespace CoffeeShopFinder.Exceptions
 {
-    public class NetworkLocationNotFoundException : Exception
+    public class NetworkLocationNotFoundException : CustomException
     {
         private static readonly string message = "Network Location '{0}' unreachable";
 

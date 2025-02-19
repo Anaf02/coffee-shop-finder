@@ -16,12 +16,7 @@ namespace CoffeeShopFinder
                 ResultsPresenter.DisplayTopThreeCoffeeShops(coffeeShopBusinessLogic.CoffeeShopsWithDistances);
             }
             catch (Exception ex) when (
-            ex is CsvReadingException
-            || ex is InvalidArgumentCountException
-            || ex is InvalidArgumentTypeException
-            || ex is InvalidCoordinateException
-            || ex is InvalidCsvContentException
-            || ex is NetworkLocationNotFoundException
+            ex is CustomException
             || ex is HttpRequestException
             || ex is IOException)
             {

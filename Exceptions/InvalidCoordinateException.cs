@@ -1,6 +1,6 @@
 ﻿namespace CoffeeShopFinder.Exceptions
 {
-    public class InvalidCoordinateException : Exception
+    public class InvalidCoordinateException : CustomException
     {
         private static readonly string message = "Provided coordinate '{0}', found in line '{1}' is not a number";
 
