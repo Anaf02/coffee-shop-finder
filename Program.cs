@@ -1,10 +1,30 @@
-﻿namespace coffee_shop_finder
+﻿using CoffeeShopFinder.Exceptions;
+
+namespace CoffeeShopFinder
 {
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            try
+            {
+                (double, double, string) parsedArgs = ProgramArgs.GetArgs(args);
+                UserLocation userLocation = new UserLocation(parsedArgs.Item1, parsedArgs.Item2);
+                CoffeeShopDataProvider coffeeShopDataProvider = new CoffeeShopDataProvider(parsedArgs.Item3);
+                CoffeeShopBusinessLogic coffeeShopBusinessLogic = new CoffeeShopBusinessLogic(coffeeShopDataProvider);
+                coffeeShopBusinessLogic.DisplayTopThreeCoffeeShops(userLocation);
+            }
+            catch (Exception ex) when (
+            ex is CustomException
+            || ex is HttpRequestException
+            || ex is IOException)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+            }
         }
     }
 }
