@@ -1,12 +1,12 @@
 ﻿namespace CoffeeShopFinder
 {
-    public class Location
+    public class UserLocation : ILocation
     {
         public double X { get; set; }
 
         public double Y { get; set; }
 
-        public Location(double x, double y)
+        public UserLocation(double x, double y)
         {
             this.X = x;
             this.Y = y;

@@ -2,21 +2,16 @@
 {
     public class CoffeeShopBusinessLogic
     {
-        public List<(CoffeeShop, double)> CoffeeShopsWithDistances { get; private set; }
-
         private List<CoffeeShop> CoffeeShops { get; set; }
 
         private int Precision = 4;
 
         public CoffeeShopBusinessLogic(CoffeeShopDataProvider coffeeShopDataProvider)
         {
-
-            CoffeeShopsWithDistances = new List<(CoffeeShop, double)>();
-
             CoffeeShops = coffeeShopDataProvider.GetCoffeeShops();
         }
 
-        private double CalculateDistance(Location userLocation, CoffeeShop coffeeShopLocation)
+        private double CalculateDistance(UserLocation userLocation, CoffeeShop coffeeShopLocation)
         {
             double distance = Math.Sqrt((Math.Pow(userLocation.X - coffeeShopLocation.X, 2) +
                            Math.Pow(userLocation.Y - coffeeShopLocation.Y, 2)));
@@ -25,12 +20,18 @@
             return distance;
         }
 
-        public void ComputeCoffeeShopsDistance(Location userLocation)
+        public void DisplayTopThreeCoffeeShops(UserLocation userLocation)
         {
+            List<(CoffeeShop, double)> CoffeeShopsWithDistances = new List<(CoffeeShop, double)>();
             foreach (CoffeeShop coffeeShop in CoffeeShops)
             {
                 CoffeeShopsWithDistances.Add((coffeeShop, CalculateDistance(userLocation, coffeeShop)));
             }
+
+            CoffeeShopsWithDistances.OrderBy(x => x.Item2)
+                                    .Take(3)
+                                    .ToList()
+                                    .ForEach(x => Console.WriteLine($"{x.Item1.Name}, {x.Item2}"));
         }
     }
 }

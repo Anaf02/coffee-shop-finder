@@ -9,11 +9,10 @@ namespace CoffeeShopFinder
             try
             {
                 (double, double, string) parsedArgs = ProgramArgs.GetArgs(args);
-                Location userLocation = new Location(parsedArgs.Item1, parsedArgs.Item2);
+                UserLocation userLocation = new UserLocation(parsedArgs.Item1, parsedArgs.Item2);
                 CoffeeShopDataProvider coffeeShopDataProvider = new CoffeeShopDataProvider(parsedArgs.Item3);
                 CoffeeShopBusinessLogic coffeeShopBusinessLogic = new CoffeeShopBusinessLogic(coffeeShopDataProvider);
-                coffeeShopBusinessLogic.ComputeCoffeeShopsDistance(userLocation);
-                ResultsPresenter.DisplayTopThreeCoffeeShops(coffeeShopBusinessLogic.CoffeeShopsWithDistances);
+                coffeeShopBusinessLogic.DisplayTopThreeCoffeeShops(userLocation);
             }
             catch (Exception ex) when (
             ex is CustomException
