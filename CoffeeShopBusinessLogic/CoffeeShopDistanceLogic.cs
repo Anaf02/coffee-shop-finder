@@ -2,7 +2,7 @@
 
 namespace CoffeeShopBusinessLogic
 {
-    public class CoffeeShopDistanceLogic
+    public class CoffeeShopDistanceLogic : ICoffeeShopDistanceLogic
     {
         private const int Precision = 4;
 

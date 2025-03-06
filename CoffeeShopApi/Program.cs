@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<CoffeeShopDbContext>(options =>
     options.UseSqlite("Data Source=coffeeshops.db"));
 builder.Services.AddScoped<ICoffeeShopRepository, CoffeeShopRepository>();
-
+builder.Services.AddScoped<ICoffeeShopDistanceLogic, CoffeeShopDistanceLogic>();
 
 // Register Swagger for API documentation
 builder.Services.AddEndpointsApiExplorer();
