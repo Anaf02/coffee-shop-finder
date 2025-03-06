@@ -2,9 +2,9 @@
 {
     public class CsvReadingException : CustomException
     {
-        private const string message = "Csv could not be read.";
+        private const string Message = "Csv could not be read.";
 
         public CsvReadingException()
-        : base(message) { }
+        : base(Message) { }
     }
 }

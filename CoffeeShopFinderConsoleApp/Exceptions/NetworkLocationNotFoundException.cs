@@ -2,9 +2,9 @@
 {
     public class NetworkLocationNotFoundException : CustomException
     {
-        private static readonly string message = "Network Location '{0}' unreachable";
+        private static readonly string Message = "Network Location '{0}' unreachable";
 
         public NetworkLocationNotFoundException(string networkLocation)
-        : base(String.Format(message, networkLocation)) { }
+        : base(String.Format(Message, networkLocation)) { }
     }
 }
