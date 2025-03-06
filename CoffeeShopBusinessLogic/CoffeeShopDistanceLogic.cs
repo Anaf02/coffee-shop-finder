@@ -4,17 +4,13 @@ namespace CoffeeShopBusinessLogic
 {
     public class CoffeeShopDistanceLogic
     {
-        private readonly int _precision = 4;
+        private const int Precision = 4;
 
-        public CoffeeShopDistanceLogic()
-        {
-        }
-
-        public double CalculateDistance(UserLocation userLocation, CoffeeShop coffeeShopLocation)
+        private static double CalculateDistance(UserLocation userLocation, CoffeeShop coffeeShopLocation)
         {
             double distance = Math.Sqrt(Math.Pow(userLocation.X - coffeeShopLocation.X, 2) +
                            Math.Pow(userLocation.Y - coffeeShopLocation.Y, 2));
-            distance = Math.Round(distance, _precision);
+            distance = Math.Round(distance, Precision);
 
             return distance;
         }
