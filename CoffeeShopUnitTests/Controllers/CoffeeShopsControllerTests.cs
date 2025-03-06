@@ -35,7 +35,7 @@ namespace CoffeeShopUnitTests.Controllers
                 new CoffeeShopDto("Test2 Coffee Shop", 1.0, 1.0, 1.2),
                 new CoffeeShopDto("Test1 Coffee Shop", 3.0, 3.0, 5.3),
             };
-            _coffeeShopDistanceLogicMock.Setup(logic => logic.ComputeClosestCoffeeShops(new UserLocation(x, y), coffeeShops))
+            _coffeeShopDistanceLogicMock.Setup(logic => logic.ComputeClosestCoffeeShops(It.Is<UserLocation>(user => user.X == x && user.Y == y), coffeeShops))
                 .Returns(coffeeShopDtoList);
 
             var result = _controller.GetCoffeeShopsInOrder(x, y) as OkObjectResult;
